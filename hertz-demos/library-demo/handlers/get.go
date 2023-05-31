@@ -3,14 +3,15 @@ package handlers
 import (
 	"context"
 	"net/http"
+	"errors"
+
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego-api-gateway/model/model.go"
-	"errors"
+	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-demos/library-demo/model"
 )
 
 func getBooks(ctx context.Context, c *app.RequestContext) {
-	c.IndentedJSON(http.StatusOK, books)
+	c.IndentedJSON(http.StatusOK, model.books)
 }
 
 func bookById(ctx context.Context, c *app.RequestContext) {
@@ -25,10 +26,10 @@ func bookById(ctx context.Context, c *app.RequestContext) {
 	c.IndentedJSON(http.StatusOK, book)
 }
 
-func getBookById(id string) (*book, error) {
-	for i, b := range books {
+func getBookById(id string) (*model.book, error) {
+	for i, b := range model.books {
 		if b.ID == id {
-			return &books[i], nil
+			return &model.books[i], nil
 		}
 	}
 

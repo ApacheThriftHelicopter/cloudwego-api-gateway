@@ -1,4 +1,4 @@
-module example/cloudwego-api-gateway
+module github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-demos/library-demo
 
 go 1.20
 

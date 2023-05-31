@@ -3,17 +3,18 @@ package handlers
 import (
 	"context"
 	"net/http"
+	
 	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego-api-gateway/model/model.go"
+	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-demos/library-demo/model"
 )
 
 func createBook(ctx context.Context, c *app.RequestContext) {
-	var newBook book 
+	var newBook model.book 
 
 	if err := c.Bind(&newBook); err != nil {
 		return
 	}
 
-	books = append(books, newBook)
+	model.books = append(model.books, newBook)
 	c.IndentedJSON(http.StatusCreated, newBook)
 }
