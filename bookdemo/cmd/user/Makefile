@@ -1,0 +1,2 @@
+kitex_gen_server:
+	kitex --thrift-plugin validator -module github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo -service user -use github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/kitex_gen ../../idl/user.thrift # execute in cmd/user
