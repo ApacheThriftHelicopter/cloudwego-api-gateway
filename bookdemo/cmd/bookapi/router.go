@@ -3,11 +3,11 @@
 package main
 
 import (
+	"context"
 	handler "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/cmd/bookapi/hertz_handler"
 	
 	"github.com/cloudwego/hertz/pkg/app/server"
-	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/cmd/api/hertz_handler"
-	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/cmd/api/hertz_handler/bookapi"
+	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/cmd/bookapi/hertz_handler/bookapi"
 	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/pkg/errno"
 	"github.com/cloudwego/hertz/pkg/app"
 )

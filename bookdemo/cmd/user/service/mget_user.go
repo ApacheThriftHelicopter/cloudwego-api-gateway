@@ -5,7 +5,7 @@ import (
 
 	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/cmd/user/dal/db"
 	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/cmd/user/pack"
-	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/kitex_gen/user"
+	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/kitex_gen/user"
 )
 
 type MGetUserService struct {

@@ -77,7 +77,7 @@ func (s *BookServiceImpl) QueryBook(ctx context.Context, req *book.QueryBookRequ
 	}
 
 	if req.Limit == 0 {
-		req.Limit = consts.DefaultLimit
+		req.Limit = constants.DefaultLimit
 	}
 
 	books, total, err := service.NewQueryBookService(ctx).QueryBookService(req)

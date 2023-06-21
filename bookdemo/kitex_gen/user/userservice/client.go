@@ -6,7 +6,7 @@ import (
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
-	user "github.com/ApacheThriftHelicopter/cloudwego-api-gatewaybookdemo/kitex_gen/user"
+	user "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/kitex_gen/user"
 
 )
 

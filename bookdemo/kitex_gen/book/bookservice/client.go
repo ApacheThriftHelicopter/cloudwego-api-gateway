@@ -3,7 +3,7 @@
 package bookservice
 
 import (
-	book "github.com/ApacheThriftHelicopter/cloudwego-api-gatewaybookdemo/kitex_gen/book"
+	book "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/kitex_gen/book"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
