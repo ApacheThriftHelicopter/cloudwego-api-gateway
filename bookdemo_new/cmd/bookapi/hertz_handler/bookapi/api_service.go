@@ -9,9 +9,6 @@ import (
 	"github.com/ApacheThriftHelicopter/cloudwego-api-gateway/bookdemo/cmd/bookapi/rpc"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
-
-	"github.com/cloudwego/kitex/pkg/generic"
-    "github.com/cloudwego/kitex/client/genericclient"
 )
 
 // CreateUser .
