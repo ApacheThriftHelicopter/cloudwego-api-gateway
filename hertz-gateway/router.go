@@ -3,13 +3,52 @@
 package main
 
 import (
-	handler "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-gateway/biz/handler"
+	"context"
+	"net/http"
+
+	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
+	"github.com/cloudwego/hertz/pkg/common/hlog"
+	"github.com/cloudwego/kitex/client"
+	"github.com/cloudwego/kitex/pkg/loadbalance"
+	"github.com/cloudwego/kitex/pkg/loadbalance/lbcache"
+	"github.com/kitex-contrib/registry-nacos/resolver"
+
+	handler "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-gateway/biz/handler"
 )
 
 // customizeRegister registers customize routers.
 func customizedRegister(r *server.Hertz) {
 	r.GET("/ping", handler.Ping)
 
-	// your code ...
+	r.GET("/", func(ctx context.Context, c *app.RequestContext) {
+		c.JSON(http.StatusOK, "hertz-gateway is running")
+	})
+
+	registerGateway(r)
+}
+
+func registerGateway (r *server.Hertz) {
+	// grouping all routes that use the /gateway path
+	group := r.Group("/gateway")
+
+	// Define idl path
+	idlPath := "../idl/"
+
+	// New service resolver with Nacos 
+	nacosResolver, err := resolver.NewDefaultNacosResolver()
+	if err != nil {
+		hlog.Fatalf("err:%v", err)
+	}
+
+	// Weighted Load Balancer
+	lb := loadbalance.NewWeightedBalancer()
+
+	handler.SvcMap.Combine(
+		idlPath, 
+		client.WithResolver(nacosResolver),
+		client.WithLoadBalancer(lb, &lbcache.Options{Cacheable: true}),
+	)
+
+	group.POST("/:svc/:method", handler.Gateway)
 }
