@@ -3,11 +3,20 @@
 package main
 
 import (
+	"context"
+	"log"
+
+	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 
 func main() {
-	h := server.Default()
+	h := server.Default(server.WithHostPorts(":8080"))
+
+	h.Use(func(c context.Context, ctx *app.RequestContext) {
+		ctx.Next(c)
+		log.Printf("Request status code: %d", ctx.Response.StatusCode())
+	})
 
 	register(h)
 	h.Spin()
