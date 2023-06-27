@@ -11,19 +11,57 @@ Our API Gateway allows users to easily add their own services following the Thri
 
 ## Basic Features
 - Generic Call with Kitex
-- Service Registry with Nacos
+- Service Registry and Discovery with Nacos
 - Load Balancing with Kitex
-- Service Mapping
+- Service Mapping 
 
 ### Generic Call
 [Kitex](https://github.com/cloudwego/kitex) provides a [JSON Mapping Generic Call](https://www.cloudwego.io/docs/kitex/tutorials/advanced-feature/generic-call/#4-json-mapping-generic-call) feature which helps with Thrift codec. 
 
-### Service Registry
+### Service Registry & Discovery
+A service registry is required to keep track of the available instances of each service. This gateway utilizes a [Kitex extension](https://github.com/kitex-contrib/registry-nacos) for server registration and discovery with Nacos.  
 
 ### Load Balancing
+[Kitex](https://github.com/cloudwego/kitex) provides a few [load balancer](https://www.cloudwego.io/docs/kitex/tutorials/service-governance/loadbalance/) options to choose from with WeightedRoundRobin, Weighted Random and ConsistentHash. For this gateway, we have opted for the WeightedRoundRobin load balancer which distributes any incoming requests to the backend Kitex servers based on weight.
 
 ### Service Mapping
 
 ## Documentation
 
 ## Set-up
+To start working with our API Gateway, users will have to first install Nacos [here](https://nacos.io/en-us/docs/v2/quickstart/quick-start.html). 
+
+Users can add their own services by providing their own code which follows the [Thrift IDL specification](https://thrift.apache.org/docs/idl) and storing them in the `idl` directory. This might look something like the following:
+
+```thrift
+namespace go book
+
+struct QueryBookReq {
+    1: i32 Num (api.query="num", api.vd="$<100; msg:'num must less than 100'");
+}
+
+struct QueryBookResp {
+    1: string ID;
+    2: string Title;
+    3: string Author;
+    4: string Content; 
+}
+
+struct InsertBookReq {
+    1: string ID (api.form="id");
+    2: string Title (api.form="title");
+    3: string Author (api.form="author");
+}
+
+struct InsertBookResp {
+    1: bool Ok; 
+    2: string Msg; 
+}
+
+service BookSvc {
+   QueryBookResp queryBook(1: QueryBookReq req) (api.get="book/query");
+   InsertBookResp insertBook(1: InsertBookReq req) (api.post="book/insert");
+}
+```
+
+## Performance
