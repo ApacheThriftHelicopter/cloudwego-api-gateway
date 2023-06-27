@@ -5,7 +5,7 @@ package book
 import (
 	"context"
 
-	book "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/biz/model/book"
+	book "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-gateway/biz/model/book"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 )
