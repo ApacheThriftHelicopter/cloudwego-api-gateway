@@ -5,10 +5,10 @@ struct QueryBookReq {
 }
 
 struct QueryBookResp {
-    1: string ID;
-    2: string Title;
-    3: string Author;
-    4: string Content; 
+    1: bool   Exist;
+    2: string ID;
+    3: string Title;
+    4: string Author;
 }
 
 struct InsertBookReq {
