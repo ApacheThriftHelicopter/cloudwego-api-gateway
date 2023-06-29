@@ -30,6 +30,38 @@ Kitex provides a few [load balancer](https://www.cloudwego.io/docs/kitex/tutoria
 In order to promote maintainability for the API Gateway, we also provide a service mapping feature such that we can not only establish the relationship between IDLs and services, but also ensure that future updates to the services through the IDL files will be reflected in the actual service itself.  
 
 ## Documentation
+### File structure
+```
+├── hertz-gateway
+│   ├── biz
+│   │   ├── errors
+│   │   ├── handler
+│   │   ├── model
+│   │   ├── router
+│   │   └── servicemapping
+│   ├── script
+│   ├── .gitignore
+│   ├── .hz
+│   ├── build.sh
+│   ├── go.mod
+│   ├── go.sum
+|   ├── main.go
+|   ├── router_gen.go
+│   └── router.go
+├── idl (for services)
+│   └── book.thrift
+├── images (assets used for README.md)
+├── kitex-server (servers for services)
+│   ├── kitex_gen
+|   ├── script
+│   ├── build.sh
+│   ├── go.mod
+│   ├── go.sum
+|   ├── handler.go
+|   ├── kitex_info.yaml
+│   └── main.go
+├── README.md
+```
 
 ## Set-up
 To start working with our API Gateway, users will have to first install Nacos [here](https://nacos.io/en-us/docs/v2/quickstart/quick-start.html). 
