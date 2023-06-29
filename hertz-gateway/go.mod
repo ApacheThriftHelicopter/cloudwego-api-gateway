@@ -3,7 +3,7 @@ module github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-gateway
 go 1.20
 
 require (
-	github.com/apache/thrift v0.18.1
+	github.com/apache/thrift v0.13.0
 	github.com/cloudwego/hertz v0.6.5
 	github.com/cloudwego/kitex v0.5.2
 	github.com/kitex-contrib/registry-etcd v0.1.0

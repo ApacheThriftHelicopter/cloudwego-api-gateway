@@ -5,13 +5,13 @@ package book
 import (
 	"context"
 
-	book "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-gateway/biz/model/book"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	book "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-gateway/biz/model/book"
 )
 
 // QueryBook .
-// @router book/query [GET]
+// @router /book/query [GET]
 func QueryBook(ctx context.Context, c *app.RequestContext) {
 	var err error
 	var req book.QueryBookReq
@@ -27,7 +27,7 @@ func QueryBook(ctx context.Context, c *app.RequestContext) {
 }
 
 // InsertBook .
-// @router book/insert [POST]
+// @router /book/insert [POST]
 func InsertBook(ctx context.Context, c *app.RequestContext) {
 	var err error
 	var req book.InsertBookReq

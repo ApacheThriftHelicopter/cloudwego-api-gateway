@@ -23,6 +23,6 @@ struct InsertBookResp {
 }
 
 service BookSvc {
-   QueryBookResp queryBook(1: QueryBookReq req) (api.get="book/query");
-   InsertBookResp insertBook(1: InsertBookReq req) (api.post="book/insert");
+   QueryBookResp queryBook(1: QueryBookReq req) (api.get="/book/query");
+   InsertBookResp insertBook(1: InsertBookReq req) (api.post="/book/insert");
 }
