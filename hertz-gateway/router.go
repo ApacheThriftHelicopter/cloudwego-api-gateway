@@ -12,7 +12,7 @@ import (
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/loadbalance"
 	"github.com/cloudwego/kitex/pkg/loadbalance/lbcache"
-	"github.com/kitex-contrib/registry-nacos/resolver"
+	etcd "github.com/kitex-contrib/registry-etcd"
 
 	handler "github.com/ApacheThriftHelicopter/cloudwego-api-gateway/hertz-gateway/biz/handler"
 )
@@ -36,7 +36,7 @@ func registerGateway (r *server.Hertz) {
 	idlPath := "../idl/"
 
 	// New service resolver with Nacos 
-	nacosResolver, err := resolver.NewDefaultNacosResolver()
+	etcdResolver, err := etcd.NewEtcdResolver([]string{"127.0.0.1:2379"})
 	if err != nil {
 		hlog.Fatalf("err:%v", err)
 	}
@@ -46,7 +46,7 @@ func registerGateway (r *server.Hertz) {
 
 	handler.SvcMap.Combine(
 		idlPath, 
-		client.WithResolver(nacosResolver),
+		client.WithResolver(etcdResolver),
 		client.WithLoadBalancer(lb, &lbcache.Options{Cacheable: true}),
 	)
 
