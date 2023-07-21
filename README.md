@@ -13,7 +13,7 @@ Our API Gateway allows users to easily add their own services following the Thri
 
 ## Basic Features
 - Generic Call with Kitex
-- Service Registry and Discovery with Nacos
+- Service Registry and Discovery with etcd
 - Load Balancing with Kitex
 - Service Mapping 
 
